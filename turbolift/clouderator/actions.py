@@ -170,6 +170,7 @@ class CloudActions(object):
                 large_object_size = 5153960756
 
             if os.path.getsize(local_object) > large_object_size:
+                headers = headers.copy()
                 # Remove the manifest entry while working with chunks
                 manifest = headers.pop('X-Object-Manifest')
                 # Feed the open file through the chunk process
